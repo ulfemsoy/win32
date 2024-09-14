@@ -114,7 +114,8 @@ If the function fails, the return value is less than zero.
 > [!Note]  
 > This is a blocking or synchronous function and might not return immediately. How quickly this function returns depends on run-time factors such as network status, print server configuration, and printer driver implementation factors that are difficult to predict when writing an application. Calling this function from a thread that manages interaction with the user interface could make the application appear to be unresponsive.
 
- 
+ > [!Note]  
+> For some printers, setting *hPrinter* to **non-NULL** (returned from **OpenPrinter** or **AddPrinter**) and *pDeviceName* to **NULL** will cause the calling application to shut-down without any error (failure INVALID_POINTER_READ_c0000005). Best practice is to set *hPrinter* to **NULL** and specify a valid *pDeviceName*.
 
 The string pointed to by the *pDeviceName* parameter can be obtained by calling the [**GetPrinter**](getprinter.md) function.
 
