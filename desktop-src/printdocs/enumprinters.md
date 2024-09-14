@@ -139,6 +139,15 @@ If the function succeeds, the return value is a nonzero value.
 
 If the function fails, the return value is zero.
 
+
+## Get the buffer size
+To get the buffer size, set *pPrinterEnum* = **NULL** and *cbBuf* = **0**. The return value is zero, but *GetLastError* will return ERROR_INSUFFICIENT_BUFFER (0x7a).
+The buffer size is returned in *pcbNeeded*.
+
+*GetLastError* may also return other errors while requesting the buffer size, for instance when the "Print Spooler" service is not running.
+In that case the returned value in *pcbNeeded* might be invalid and not be set to zero.
+
+
 ## Remarks
 
 Do not call this method in [**DllMain**](/windows/desktop/Dlls/dllmain).
